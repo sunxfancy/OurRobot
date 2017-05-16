@@ -2,7 +2,7 @@
 import {turlingApi, turlingKey} from '../conf'
 
 export = (robot) => {
-    robot.catchAll(msg => {
+    robot.respond(/[\u4E00-\u9FA5\uF900-\uFA2D]+/, msg => {
         let user = msg.message.user.name
         // console.log(hashCode(user))
         robot.http(turlingApi).post(JSON.stringify({
