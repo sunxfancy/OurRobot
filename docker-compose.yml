@@ -1,15 +1,18 @@
-version: "3"
+version: "2"
 
 services:
   nodejs:
     restart: always
     image: node:7.10
+    working_dir: /hubot
+    command: npm start
     ports:
       - "8081:80"
     volumes:
       - ./hubot-wechat:/hubot
 
   robot:
+    restart: always
     image: sunxfancy/ourrobot:latest
     command: ./run_server.sh
     expose:

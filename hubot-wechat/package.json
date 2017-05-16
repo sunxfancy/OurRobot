@@ -4,8 +4,13 @@
   "private": true,
   "author": "西风逍遥游 <sunxfancy@gmail.com>",
   "description": "A little group chatting robot for wechat",
+  "scripts": {
+    "start": "./bin/hubot -a weixin",
+    "test": "./bin/hubot"
+  },
   "dependencies": {
-    "hubot": "^2.19.0",
+    "@types/node": "^7.0.18",
+    "hubot": "git://github.com/Norgerman/hubot",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
     "hubot-google-translate": "^0.2.0",
@@ -14,6 +19,7 @@
     "hubot-maps": "0.0.2",
     "hubot-pugme": "^0.1.0",
     "hubot-redis-brain": "0.0.3",
+    "hubot-reload-scripts": "^0.1.4",
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",

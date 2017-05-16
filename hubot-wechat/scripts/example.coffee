@@ -10,8 +10,14 @@
 
 module.exports = (robot) ->
 
-  robot.hear /名乃/i, (res) ->
+  robot.respond /名乃/i, (res) ->
     res.send "叫我吗？"
+
+  robot.hear /侠/i, (res) ->
+    res.send "徐侠客"
+
+  robot.respond /更新/i, (res) ->
+    res.send "好的，咱更新啦！"
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
