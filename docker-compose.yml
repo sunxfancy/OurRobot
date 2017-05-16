@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  nodejs:
+    restart: always
+    image: node:7.10
+    ports:
+      - "8081:80"
+    volumes:
+      - ./hubot-wechat:/hubot
+
+  robot:
+    build: .
+    command: ./run_server.sh
+    expose:
+      - "8082"
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./chatbot-zh-torch7:/app
+
+  mongo:
+    restart: always
+    image: mongo:3.4
+    expose:
+      - "27017"
+    ports:
+      - "8083:27017"
+    volumes:
+      - robot-mongo:/data/db
+
+volumes:
+  robot-mongo:
+    driver: local
