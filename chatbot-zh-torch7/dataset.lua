@@ -32,6 +32,7 @@ function DataSet:__init(loader, options)
   self.examples = {}
   self.word2id = {}
   self.id2word = {}
+  self.wordFreq = {}
   self.wordsCount = 0
 
   self:load(loader)
@@ -51,6 +52,7 @@ function DataSet:load(loader)
     self.eosToken = data.eosToken
     self.unknownToken = data.unknownToken
     self.examplesCount = data.examplesCount
+    self.wordFreq = data.wordFreq
     --print(self.word2id)
   else
     print("" .. filename .. " not found")
@@ -63,7 +65,8 @@ function DataSet:load(loader)
       goToken = self.goToken,
       eosToken = self.eosToken,
       unknownToken = self.unknownToken,
-      examplesCount = self.examplesCount
+      examplesCount = self.examplesCount,
+      wordFreq = self.wordFreq
     })
   end
 end
@@ -278,7 +281,11 @@ function DataSet:makeWordId(word)
   local id = self.word2id[word]
 
   if id then
-    self.wordFreq[word] = self.wordFreq[word] + 1
+    if self.wordFreq[word] then
+      self.wordFreq[word] = self.wordFreq[word] + 1
+    else
+      self.wordFreq[word] = 1
+    end
     --print("more freq > 1")
   else
     --print("to dict word = "..word)

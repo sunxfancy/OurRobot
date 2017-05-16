@@ -12,9 +12,8 @@ services:
       - ./hubot-wechat:/hubot
 
   robot:
-    restart: always
     image: sunxfancy/ourrobot:latest
-    command: ./run_server.sh
+    command: sh ./run_trainning.sh
     expose:
       - "8082"
     ports:
