@@ -10,7 +10,7 @@ services:
       - ./hubot-wechat:/hubot
 
   robot:
-    build: .
+    image: sunxfancy/ourrobot:latest
     command: ./run_server.sh
     expose:
       - "8082"
