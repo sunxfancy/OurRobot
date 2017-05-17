@@ -1,1 +1,1 @@
-th train.lua --dataset 5000 --hiddenSize 1000
+th train.lua --dataset 50 --hiddenSize 100
