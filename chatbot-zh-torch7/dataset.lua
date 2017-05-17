@@ -98,14 +98,14 @@ function DataSet:visit(conversations)
     xlua.progress(#conversations + i, total)
   end
 
-  print("-- Removing low frequency words")
-  print("sfsgsdfgdf")
+  -- print("-- Removing low frequency words")
+  -- print("sfsgsdfgdf")
 
-  for i, datum in ipairs(self.examples) do
-    self:removeLowFreqWords(datum[1])
-    self:removeLowFreqWords(datum[2])
-    xlua.progress(i, #self.examples)
-  end
+  -- for i, datum in ipairs(self.examples) do
+  --   self:removeLowFreqWords(datum[1])
+  --   self:removeLowFreqWords(datum[2])
+  --   xlua.progress(i, #self.examples)
+  -- end
 
   print("-- Shuffling ")
   newIdxs = torch.randperm(#self.examples)
