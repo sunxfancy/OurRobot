@@ -13,7 +13,7 @@ services:
 
   robot:
     image: sunxfancy/ourrobot:latest
-    command: sh ./run_trainning.sh
+    command: sh ./run_server.sh
     expose:
       - "8082"
     ports:
