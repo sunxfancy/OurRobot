@@ -5,11 +5,13 @@
   "author": "西风逍遥游 <sunxfancy@gmail.com>",
   "description": "A little group chatting robot for wechat",
   "scripts": {
-    "start": "./bin/hubot -a weixin",
+    "start": "node ./www/main.js",
+    "wechat": "./bin/hubot -a weixin",
     "test": "./bin/hubot"
   },
   "dependencies": {
     "@types/node": "^7.0.18",
+    "express": "^4.15.3",
     "hubot": "git://github.com/Norgerman/hubot",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.6",
