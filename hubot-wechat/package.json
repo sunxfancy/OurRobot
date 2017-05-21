@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/node": "^7.0.18",
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "hubot": "git://github.com/Norgerman/hubot",
     "hubot-diagnostics": "0.0.1",

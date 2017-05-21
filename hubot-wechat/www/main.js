@@ -2,10 +2,20 @@ var express = require('express');
 var path = require('path');
 var cp = require('child_process');
 var fs = require('fs');
+var bodyParser = require('body-parser')
 
+/// setup express and public resources
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
+/// use bodyParser for post data parse
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
+
+
+/// load website json configuration
 var config_json = path.join(__dirname, '..', 'config.json');
 var config = {};
 if (!fs.existsSync(config_json)) 
@@ -16,10 +26,17 @@ function save_config() {
     fs.writeFileSync(config_json, JSON.stringify(config));
 }
 
+/// running status 
 var running = {};
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/start/:adapter', function (req, res) {
+
+// list all adapters' status
+app.get('/list', function(req, res) {
+    res.send({err: 0, status: running});
+});
+
+// start an adapter for the robot
+app.post('/start/:adapter', function (req, res) {
     var adapter = req.params.adapter;
 
     if (!(config.name || (config[adapter] && config[adapter].name))) {
@@ -39,16 +56,15 @@ app.get('/start/:adapter', function (req, res) {
     res.send({err: 0});
 });
 
-app.get('/list', function(req, res) {
-    res.send({err: 0, status: running});
-});
-
-app.get('/stop/:adapter', function (req, res) {
+// stop an adapter
+app.post('/stop/:adapter', function (req, res) {
     var adapter = req.params.adapter;
     running[adapter] = 'stop';
     res.send({err: 0});
 });
 
+
+// set the cookie of wechat
 app.post('/wechat/cookie', function (req, res) {
     res.send({err: 0});
 });
