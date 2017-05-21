@@ -1,3 +1,4 @@
 .vscode/
 conf.ts
 ts-node*/
+config.json
