@@ -1,0 +1,61 @@
+# WX configuration
+#------------------------------------------------------------------------------------------
+# Config for request fields and WX mandatory fields (as below) in sending message out
+# - header
+#   + Cookie
+# - BaseRequest
+#   + Uin
+#   + Sid
+#   + Skey
+#   + DeviceID
+#------------------------------------------------------------------------------------------
+
+# Wx Urls #
+baseUrl: "https://wx.qq.com/cgi-bin/mmwebwx-bin" #wx/wx2
+baseUploadUrl: "https://file.wx.qq.com/cgi-bin/mmwebwx-bin" #file/file2
+getContactUrl: "/webwxgetcontact"
+batchGetContactUrl: "/webwxbatchgetcontact"
+sendMsgUrl: "/webwxsendmsg"
+getWebwxInit: "/webwxinit"
+getWebwxSync: "/webwxsync"
+getWebwxOplog: "/webwxoplog"
+syncCheck: "/synccheck"
+webWxUploadMedia: "/webwxuploadmedia"
+webwxsendmsgimg: "/webwxsendmsgimg"
+
+contentType: "application/json;charset=UTF-8"
+connection: "keep-alive"
+
+cookie: "webwxuvid=fe58892dca64319c627ef5bf0e0aca9eb3dfd0e3036706e1ccbcbf0b3247e8a42b3cadd6850d72c6c4e20621fbcc6fba; pgv_pvi=5447313408; refreshTimes=5; pgv_si=s7962115072; webwx_auth_ticket=CIsBELrtir4PGoAB8jcrGqjRLbWoSpMBG0/XjmPqBkxyOayAGNaD5K3GqLXn7ifW9YZ/FIaW6sJ4CRaVKLb+jfR6FW/ki6r88uW/jYTbD3Ly5cNdzSDI9/oZs4FRB+QvuWvB1XOOgXXaDuyqSTo+swMfPKKlPGQj/LSCwtMPan3JIMZo34jgBxiMDXY=; login_frequency=1; last_wxuin=664892177; wxloadtime=1495373551_expired; wxpluginkey=1495361161; wxuin=664892177; wxsid=a0tX1+plbdiZAxAG; webwx_data_ticket=gSeZiKgpR43yQZRODB/TFRqc; mm_lang=en_US; MM_WX_NOTIFY_STATE=1; MM_WX_SOUND_STATE=1"
+
+Uin: "xuin=664892177"
+Sid: "a0tX1+plbdiZAxAG"
+Skey: ""
+DeviceID: "e944074682308070"
+
+listenOnAllGroups: true
+listenGroupNameList: [""]
+
+# Media
+imageDir: ""
+imageDirForReply: ""
+sendImageGroupNameList: [""]
+
+# input maintainer name
+# Hubot will notify maintainer if encounter issues
+maintainerName: "笑凡" 
+
+foreverDaemon: true
+
+# WxHubot Configurations
+# unit:
+  # s = seconds
+  # m = milliseconds
+  # u = microseconds
+  # n = nanoseconds
+webWxSyncInterval: "2s"
+syncCheckInterval: "30s"
+reportHealthInterval: "21600s"
+
+logToFile: false
+wxLogPath: "./log/wxhubot.log"

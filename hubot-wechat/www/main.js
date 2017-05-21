@@ -1,8 +1,11 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var cp = require('child_process');
 var fs = require('fs');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var axios = require('axios');
 
 /// setup express and public resources
 var app = express();
@@ -28,6 +31,8 @@ function save_config() {
 
 /// running status 
 var running = {};
+
+
 
 
 // list all adapters' status
@@ -84,6 +89,36 @@ app.get('/history', function (req, res) {
     var data = history.split('\n');
     res.send({err: 0, history: data});
 });
+
+
+app.get('/login', function (req, res) {
+    var jslogin = "https://login.wx.qq.com/jslogin?appid=wx782c26e4c19acffb&redirect_uri=https%3A%2F%2Fwx.qq.com%2Fcgi-bin%2Fmmwebwx-bin%2Fwebwxnewloginpage&fun=new&lang=en_US&_=";
+    axios.get(jslogin+new Date().getTime()).then(async v => {
+        if (v.status != 200) return res.send({err: 100, msg: '登录错误，jslogin接口异常'})
+        var window = {QRLogin: {}};
+        eval(v.data);
+        res.send(window.QRLogin);
+    });
+});
+
+app.get('/login/:uuid', function (req, res) {
+    var cgi = "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=false&uuid="+ req.params.uuid +"&tip=0&r=-1890169253";
+    console.log(cgi);
+    axios.get(cgi).then(async v => {
+        if (v.status != 200) return res.send({err: 101, msg: '登录错误，cgi接口异常'})
+        var window = {};
+        eval(v.data);
+        if (window.redirect_uri) {
+            var ret = await axios.get(window.redirect_uri);
+            if (ret.status == 200) {
+                console.log(ret.data);
+            }
+        }
+        res.send(window);
+    });
+});
+
+
 
 app.listen(11611, function () {
   console.log('app listening on port 11611!')

@@ -6,11 +6,12 @@
   "description": "A little group chatting robot for wechat",
   "scripts": {
     "start": "node ./www/main.js",
-    "wechat": "./bin/hubot -a weixin",
+    "wechat": "./bin/hubot -a wechat",
     "test": "./bin/hubot"
   },
   "dependencies": {
     "@types/node": "^7.0.18",
+    "axios": "^0.16.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "hubot": "git://github.com/Norgerman/hubot",
@@ -26,7 +27,7 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-weixin": "^1.0.8"
+    "hubot-wechat": "git://github.com/sunxfancy/Hubot-WeChat"
   },
   "engines": {
     "node": "0.10.x"

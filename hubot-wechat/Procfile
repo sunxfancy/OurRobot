@@ -1,1 +1,1 @@
-web: bin/hubot -a weixin
+web: bin/hubot -a wechat
