@@ -14,7 +14,10 @@ module.exports = (robot) ->
     res.send "叫我吗？"
 
   robot.hear /侠/i, (res) ->
-    res.send "徐侠客"
+    res.send "@徐宇楠\u2005 叫你呢，侠客。"
+
+  robot.hear /徐/i, (res) ->
+    res.reply "@徐宇楠\u2005 叫你呢，快来。"
 
   robot.respond /更新/i, (res) ->
     res.send "好的，咱更新啦！"
