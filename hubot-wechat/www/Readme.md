@@ -10,7 +10,7 @@ API 文档
 开启一个robot
 
 ```js
-url:  /start/:adapter  (post)
+url:  "/start/:adapter"  (post)
 
 ok:  {err: 0}
 
@@ -25,13 +25,17 @@ error1: {
 error2: {
     err: 202, msg: 'adapter启动失败'
 }
+
+error3: {
+    err: 202, msg: 'adapter正在运行中'
+}
 ```
 
 
 停止一个robot
 
 ```js
-url:  /stop/:adapter  (post)
+url:  "/stop/:adapter"  (post)
 
 ok:  {err: 0}
 
@@ -47,7 +51,7 @@ error0: {
 
 
 ```js
-url:  /list  (get)
+url:  "/list"  (get)
 
 ok:  {
     err: 0, 
@@ -65,7 +69,7 @@ ok:  {
 设置通用机器人的名字，若某个adapter没有设置专用名字，则用通用名字代替
 
 ```js
-url:  /name  (post)
+url:  "/name"  (post)
 params: { data: '名乃' }
 
 
@@ -80,7 +84,7 @@ error0: {
 
 
 ```js
-url:  /name/:adapter  (post)
+url:  "/name/:adapter"  (post)
 params: { data: '小哀' }
 
 ok: { err: 0 }
@@ -96,7 +100,7 @@ error0: {
 请求某次登录的uuid
 
 ```js
-url:  /wxlogin  (get)
+url:  "/wxlogin"  (get)
 
 ok: { code: 200, uuid: "gZU-6Vl4vw==" }
 
@@ -108,7 +112,7 @@ error0: {
 轮询某次登录用户是否扫描并确认登录
 
 ```js
-url:  /wxlogin/:uuid  (get)
+url:  "/wxlogin/:uuid"  (get)
 
 ok0: { code: 408 } // 用户未扫描
 ok1: { code: 201 } // 用户扫描但未确认
@@ -118,3 +122,5 @@ error0: {
     err: 101, msg: '登录错误，cgi接口异常'
 }
 ```
+
+检测到200信号后，既可使用post访问/start/wechat来启动机器人

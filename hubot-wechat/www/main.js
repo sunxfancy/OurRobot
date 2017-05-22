@@ -59,10 +59,17 @@ app.post('/start/:adapter', function (req, res) {
     var subenv = {};
     for (var index in process.env) subenv[index] = process.env[index];
     subenv.PATH = 'node_modules/.bin:node_modules/hubot/node_modules/.bin:'+process.env.PATH;
-    cp.execFile(hubot, ['--name', name, '-a', adapter], { env: subenv }, function(err, stdout, stderr) {
-        console.log(err, stdout);
+    var child = cp.spawn(hubot, ['--name', name, '-a', adapter], { env: subenv });
+    child.stdout.on('data', function(data){
+        console.log(`${name} output: ` + data);
         running[adapter] = 'running';
-    })
+    });
+    running[adapter+"-process"] = child;
+    child.on('exit', function(code) {
+        console.log('child process terminated with code ' + code);
+        running[adapter] = 'stop';
+        delete running[adapter+"-process"];
+    });
     running[adapter] = 'startup';
     
     res.send({err: 0});
