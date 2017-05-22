@@ -90,3 +90,31 @@ error0: {
 }
 ```
 
+
+## 微信登录
+
+请求某次登录的uuid
+
+```js
+url:  /wxlogin  (get)
+
+ok: { code: 200, uuid: "gZU-6Vl4vw==" }
+
+error0: {
+    err: 100, msg: '登录错误，jslogin接口异常'
+}
+```
+
+轮询某次登录用户是否扫描并确认登录
+
+```js
+url:  /wxlogin/:uuid  (get)
+
+ok0: { code: 408 } // 用户未扫描
+ok1: { code: 201 } // 用户扫描但未确认
+ok1: { code: 200 } // 用户扫描确认
+
+error0: {
+    err: 101, msg: '登录错误，cgi接口异常'
+}
+```

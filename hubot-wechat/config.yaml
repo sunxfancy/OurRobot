@@ -1,61 +1,44 @@
-# WX configuration
-#------------------------------------------------------------------------------------------
-# Config for request fields and WX mandatory fields (as below) in sending message out
-# - header
-#   + Cookie
-# - BaseRequest
-#   + Uin
-#   + Sid
-#   + Skey
-#   + DeviceID
-#------------------------------------------------------------------------------------------
-
-# Wx Urls #
-baseUrl: "https://wx.qq.com/cgi-bin/mmwebwx-bin" #wx/wx2
-baseUploadUrl: "https://file.wx.qq.com/cgi-bin/mmwebwx-bin" #file/file2
-getContactUrl: "/webwxgetcontact"
-batchGetContactUrl: "/webwxbatchgetcontact"
-sendMsgUrl: "/webwxsendmsg"
-getWebwxInit: "/webwxinit"
-getWebwxSync: "/webwxsync"
-getWebwxOplog: "/webwxoplog"
-syncCheck: "/synccheck"
-webWxUploadMedia: "/webwxuploadmedia"
-webwxsendmsgimg: "/webwxsendmsgimg"
-
-contentType: "application/json;charset=UTF-8"
-connection: "keep-alive"
-
-cookie: "webwxuvid=fe58892dca64319c627ef5bf0e0aca9eb3dfd0e3036706e1ccbcbf0b3247e8a42b3cadd6850d72c6c4e20621fbcc6fba; pgv_pvi=5447313408; refreshTimes=5; pgv_si=s7962115072; webwx_auth_ticket=CIsBELrtir4PGoAB8jcrGqjRLbWoSpMBG0/XjmPqBkxyOayAGNaD5K3GqLXn7ifW9YZ/FIaW6sJ4CRaVKLb+jfR6FW/ki6r88uW/jYTbD3Ly5cNdzSDI9/oZs4FRB+QvuWvB1XOOgXXaDuyqSTo+swMfPKKlPGQj/LSCwtMPan3JIMZo34jgBxiMDXY=; login_frequency=1; last_wxuin=664892177; wxloadtime=1495373551_expired; wxpluginkey=1495361161; wxuin=664892177; wxsid=a0tX1+plbdiZAxAG; webwx_data_ticket=gSeZiKgpR43yQZRODB/TFRqc; mm_lang=en_US; MM_WX_NOTIFY_STATE=1; MM_WX_SOUND_STATE=1"
-
-Uin: "xuin=664892177"
-Sid: "a0tX1+plbdiZAxAG"
-Skey: ""
-DeviceID: "e944074682308070"
-
+baseUrl: 'https://wx.qq.com/cgi-bin/mmwebwx-bin'
+baseUploadUrl: 'https://file.wx.qq.com/cgi-bin/mmwebwx-bin'
+getContactUrl: /webwxgetcontact
+batchGetContactUrl: /webwxbatchgetcontact
+sendMsgUrl: /webwxsendmsg
+getWebwxInit: /webwxinit
+getWebwxSync: /webwxsync
+getWebwxOplog: /webwxoplog
+syncCheck: /synccheck
+webWxUploadMedia: /webwxuploadmedia
+webwxsendmsgimg: /webwxsendmsgimg
+contentType: application/json;charset=UTF-8
+connection: keep-alive
+cookie: >-
+  wxuin=664892177; Expires=Mon, 22 May 2017 21:01:31 GMT; Domain=wx.qq.com;
+  Path=/;wxsid=mZxGEE2MJygQXdBU; Expires=Mon, 22 May 2017 21:01:31 GMT;
+  Domain=wx.qq.com; Path=/;wxloadtime=1495443691; Expires=Mon, 22 May 2017
+  21:01:31 GMT; Domain=wx.qq.com; Path=/;mm_lang=en_US; Expires=Mon, 22 May 2017
+  21:01:31 GMT; Domain=wx.qq.com;
+  Path=/;webwx_data_ticket=gSe05nji/O1DaY0JGTD1lEgj; Expires=Mon, 22 May 2017
+  21:01:31 GMT; Domain=qq.com;
+  Path=/;webwxuvid=fe58892dca64319c627ef5bf0e0aca9e25472fc9554ab86112abc92d289509cb6d1a2fe9904e0dc15ec0d837e584a8db;
+  Expires=Thu, 20 May 2027 09:01:31 GMT; Domain=wx.qq.com;
+  Path=/;webwx_auth_ticket=CIsBEP3pxr4HGoAB/iZ24q1IiLJ7J9eSszbAA2PqBkxyOayAGNaD5K3GqLXnJJ8Meb61VPNsYlOziDfq6XvlRt0vpQsAAHyQb338R0+AIbDe4A95mcuNMtfyCYP6foup8LmQoN7SIIk5KTYVtX7lAHGtFJRvoH0PZ9pm1XFySTuam/WK57mNBggt2ck=;
+  Expires=Thu, 20 May 2027 09:01:31 GMT; Domain=wx.qq.com; Path=/
+Uin: '664892177'
+Sid: mZxGEE2MJygQXdBU
+Skey: '@crypt_b78593cc_7a3e6de41109641c2d22eb03206b874e'
+DeviceID: e166490403481441
 listenOnAllGroups: true
-listenGroupNameList: [""]
-
-# Media
-imageDir: ""
-imageDirForReply: ""
-sendImageGroupNameList: [""]
-
-# input maintainer name
-# Hubot will notify maintainer if encounter issues
-maintainerName: "笑凡" 
-
+listenGroupNameList:
+  - ''
+imageDir: ''
+imageDirForReply: ''
+sendImageGroupNameList:
+  - ''
+maintainerName: 笑凡
 foreverDaemon: true
-
-# WxHubot Configurations
-# unit:
-  # s = seconds
-  # m = milliseconds
-  # u = microseconds
-  # n = nanoseconds
-webWxSyncInterval: "2s"
-syncCheckInterval: "30s"
-reportHealthInterval: "21600s"
-
+webWxSyncInterval: 2s
+syncCheckInterval: 30s
+reportHealthInterval: 21600s
 logToFile: false
-wxLogPath: "./log/wxhubot.log"
+wxLogPath: ./log/wxhubot.log
+PassTicket: AK%2BahVzpasPgtNkLfTO1siOetOxlGeIv6UYvrRXemtq%2BE1jNRLmiLCdSoZe62sQq

@@ -27,7 +27,10 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-wechat": "git://github.com/sunxfancy/Hubot-WeChat"
+    "hubot-wechat": "git://github.com/sunxfancy/Hubot-WeChat",
+    "js-yaml": "^3.8.4",
+    "tough-cookie": "^2.3.2",
+    "xml2js": "^0.4.17"
   },
   "engines": {
     "node": "0.10.x"

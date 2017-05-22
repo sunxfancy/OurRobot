@@ -6,24 +6,30 @@
     <body>
         <h1>Wechat login</h1>
         <img id='qrcode' src="" alt="">
+        <button onclick='start();'>开启微信机器人🎉</button>
 
         <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <script>
             var img = $('#qrcode');
             var timerId = null; var count = 0;
-            $.getJSON('/login', function(data) {
+            $.getJSON('/wxlogin', function(data) {
                 console.log(data);
                 img.attr('src', "https://login.weixin.qq.com/qrcode/" + data.uuid);
                 count = 0;
                 timerId = setInterval(function () {
                     count++;
                     if (count >= 25) clearInterval(timerId);
-                    $.getJSON('/login/'+data.uuid, function(d) {
+                    $.getJSON('/wxlogin/'+data.uuid, function(d) {
                         console.log(d);
                         clearInterval(timerId);
                     });
                 },2000);
             });
+            function start() {
+                $.post('/start/wechat', function(data) {
+                    console.log(data);
+                });
+            }
         </script>
     </body>
 </html>
