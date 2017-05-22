@@ -6,6 +6,11 @@ var cp = require('child_process');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var axios = require('axios');
+// import axios from 'axios'
+// const axiosCookieJarSupport = require('@3846masa/axios-cookiejar-support');
+// const tough = require('tough-cookie');
+
+// axiosCookieJarSupport(axios);
 
 /// setup express and public resources
 var app = express();
@@ -102,16 +107,20 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/login/:uuid', function (req, res) {
+    if (config.wechat) return res.send(config.wechat);
     var cgi = "https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=false&uuid="+ req.params.uuid +"&tip=0&r=-1890169253";
     console.log(cgi);
     axios.get(cgi).then(async v => {
         if (v.status != 200) return res.send({err: 101, msg: '登录错误，cgi接口异常'})
+        console.log(v.headers['set-cookie']);
         var window = {};
         eval(v.data);
         if (window.redirect_uri) {
-            var ret = await axios.get(window.redirect_uri);
+            console.log(window.redirect_uri);
+            var ret = await axios.get(window.redirect_uri+"&fun=new&version=v2");
             if (ret.status == 200) {
                 console.log(ret.data);
+                config.wechat = ret.data;
             }
         }
         res.send(window);

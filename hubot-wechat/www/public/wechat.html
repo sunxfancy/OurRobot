@@ -17,9 +17,10 @@
                 count = 0;
                 timerId = setInterval(function () {
                     count++;
-                    if (count >= 25) clearinterval(timerId);
+                    if (count >= 25) clearInterval(timerId);
                     $.getJSON('/login/'+data.uuid, function(d) {
                         console.log(d);
+                        clearInterval(timerId);
                     });
                 },2000);
             });
