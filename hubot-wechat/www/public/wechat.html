@@ -7,7 +7,7 @@
         <h1>Wechat login</h1>
         <img id='qrcode' src="" alt="">
         <button onclick='start();'>开启微信机器人🎉</button>
-
+        <button onclick='stop();'>关闭机器人</button>
         <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <script>
             var img = $('#qrcode');
@@ -27,6 +27,11 @@
             });
             function start() {
                 $.post('/start/wechat', function(data) {
+                    console.log(data);
+                });
+            }
+            function stop() {
+                $.post('/stop/wechat', function(data) {
                     console.log(data);
                 });
             }

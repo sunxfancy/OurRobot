@@ -66,7 +66,8 @@ app.post('/start/:adapter', function (req, res) {
     });
     running[adapter+"-process"] = child;
     child.on('exit', function(code) {
-        console.log('child process terminated with code ' + code);
+        if (code != 0)
+            console.log(`${name} start error with code ${code}`);
         running[adapter] = 'stop';
         delete running[adapter+"-process"];
     });
@@ -78,6 +79,10 @@ app.post('/start/:adapter', function (req, res) {
 // stop an adapter
 app.post('/stop/:adapter', function (req, res) {
     var adapter = req.params.adapter;
+    if (running[adapter] == 'running') {
+        running[adapter+"-process"].kill();
+        console.log(`${adapter} stop`);
+    }
     running[adapter] = 'stop';
     res.send({err: 0});
 });
