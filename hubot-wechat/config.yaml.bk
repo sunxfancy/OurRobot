@@ -1,0 +1,44 @@
+baseUrl: 'https://wx.qq.com/cgi-bin/mmwebwx-bin'
+baseUploadUrl: 'https://file.wx.qq.com/cgi-bin/mmwebwx-bin'
+getContactUrl: /webwxgetcontact
+batchGetContactUrl: /webwxbatchgetcontact
+sendMsgUrl: /webwxsendmsg
+getWebwxInit: /webwxinit
+getWebwxSync: /webwxsync
+getWebwxOplog: /webwxoplog
+syncCheck: /synccheck
+webWxUploadMedia: /webwxuploadmedia
+webwxsendmsgimg: /webwxsendmsgimg
+contentType: application/json;charset=UTF-8
+connection: keep-alive
+cookie: >-
+  wxuin=664892177; Expires=Mon, 22 May 2017 21:42:38 GMT; Domain=wx.qq.com;
+  Path=/;wxsid=VTu0pA62Ow19lrFM; Expires=Mon, 22 May 2017 21:42:38 GMT;
+  Domain=wx.qq.com; Path=/;wxloadtime=1495446158; Expires=Mon, 22 May 2017
+  21:42:38 GMT; Domain=wx.qq.com; Path=/;mm_lang=en_US; Expires=Mon, 22 May 2017
+  21:42:38 GMT; Domain=wx.qq.com;
+  Path=/;webwx_data_ticket=gSeEdoNi5fZ3m533jsIuiC6X; Expires=Mon, 22 May 2017
+  21:42:38 GMT; Domain=qq.com;
+  Path=/;webwxuvid=fe58892dca64319c627ef5bf0e0aca9eea766272e315bbb7722da7d85475aa001893031625200cdc2b74253c79bd4207;
+  Expires=Thu, 20 May 2027 09:42:38 GMT; Domain=wx.qq.com;
+  Path=/;webwx_auth_ticket=CIsBEM7tsvILGoAB5+Slfwmx+0/iRBUiQ2qjq2PqBkxyOayAGNaD5K3GqLX2vAejedIa6peUtJx0SMDZTyZXQUKWIFqq3BXmPV3Ve7qirWui+5GSfCC66SrPJk/aRsKFc7BjaXyagYaLxA+zOCjb2Y+3htUlnibQ/LoK2nFySTuam/WK57mNBggt2ck=;
+  Expires=Thu, 20 May 2027 09:42:38 GMT; Domain=wx.qq.com; Path=/
+Uin: '664892177'
+Sid: VTu0pA62Ow19lrFM
+Skey: '@crypt_b78593cc_a6cd53b90d9f9ea8c1252bc2930293b9'
+DeviceID: e166490403481441
+listenOnAllGroups: true
+listenGroupNameList:
+  - ''
+imageDir: ''
+imageDirForReply: ''
+sendImageGroupNameList:
+  - ''
+maintainerName: 笑凡
+foreverDaemon: true
+webWxSyncInterval: 2s
+syncCheckInterval: 30s
+reportHealthInterval: 21600s
+logToFile: false
+wxLogPath: ./log/wxhubot.log
+PassTicket: JSK7086T%2FKakfcSdBigBOrMZtlt3PjYyrBeq06sTYr%2ByHFSszyz8HXKDjk8VvGCg

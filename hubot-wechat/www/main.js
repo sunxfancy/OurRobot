@@ -159,8 +159,11 @@ app.get('/wxlogin/:uuid', function (req, res) {
 
 function save_config_yaml(wechat) {
     var confg_path = path.join(__dirname, '..', 'config.yaml');
-    var cfg_str = fs.readFileSync(confg_path, 'utf-8');
-    var cfg = yaml.safeLoad(cfg_str);
+    var cfg = {};
+    if (fs.existsSync(confg_path)) {
+        var cfg_str = fs.readFileSync(confg_path, 'utf-8');
+        cfg = yaml.safeLoad(cfg_str);
+    }
     for (var i in wechat) {
         cfg[i] = wechat[i];
     }
