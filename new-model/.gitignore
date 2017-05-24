@@ -1,0 +1,9 @@
+data/
+build/
+extracted/
+*.pyc
+__py_init__/
+*.c
+*.o
+*.so
+.DS_Store/
