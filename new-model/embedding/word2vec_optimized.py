@@ -139,13 +139,13 @@ class Word2Vec(object):
   """Word2Vec model (Skipgram)."""
 
   def __init__(self, options, session):
-    self._options = options
-    self._session = session
-    self._word2id = {}
-    self._id2word = []
-    self.build_graph()
-    self.build_eval_graph()
-    self.save_vocab()
+      self._options = options
+      self._session = session
+      self._word2id = {}
+      self._id2word = []
+      self.build_graph()
+      self.build_eval_graph()
+      self.save_vocab()
 
   def read_analogies(self):
     """Reads through the analogy question file.
@@ -223,7 +223,7 @@ class Word2Vec(object):
                                           labels,
                                           lr,
                                           vocab_count=opts.vocab_counts.tolist(),
-                                          num_negative_samples=opts.num_samples)
+                                          num_negative_samples=opts.y)
 
     self._w_in = w_in
     self._examples = examples
@@ -399,7 +399,7 @@ class Word2Vec(object):
     for i in xrange(len(words)):
       print("\n%s\n=====================================" % (words[i]))
       for (neighbor, distance) in zip(idx[i, :num], vals[i, :num]):
-        print("%-20s %6.4f" % (self._id2word[neighbor], distance))
+        print("%-20s %6.4f" % (str(self._id2word[neighbor],'utf-8'), distance))
 
 
 def _start_shell(local_ns=None):
