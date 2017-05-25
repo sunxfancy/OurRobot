@@ -8,6 +8,7 @@ services:
     command: npm start
     ports:
       - "8081:80"
+      - "80:11611"
     volumes:
       - ./hubot-wechat:/hubot
 
